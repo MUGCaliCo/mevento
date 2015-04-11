@@ -1,0 +1,48 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Mevento</h1>
+    <p class="lead">Eventos como nunca antes</p>
+    <img src="https://dl.dropboxusercontent.com/u/39870896/mugcalico/mug-calico.png" alt="MUGCaliCo" height="80">
+  </div>
+</header>
+
+<div class="container" ng-show="events">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Últimos Eventos</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="event in events">
+        <li><a ng-href="/event/{{event.slug}}" >{{event.title}}</a></li>
+      </ul>
+    </div>
+  </div>
+<hr>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Mejores Escenarios</h1>
+      <div class="row">
+        <div class="col-md-4 col-sm-6" ng-repeat="venue in venues">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{venue.name}}</h3>
+              </div>
+              <div class="panel-body">
+                {{venue.info}}
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p>Mevento |
+        <a href="https://twitter.com/juliancantillo">@juliancantillo</a> |
+         <a href="https://github.com/MUGCaliCo/mevento/issues?state=open">Issues</a></p>
+  </div>
+</footer>

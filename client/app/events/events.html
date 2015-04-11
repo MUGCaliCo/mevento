@@ -1,0 +1,25 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Eventos</h1>
+    <p class="lead">Busca los mejores eventos en tu cuidad</p>
+  </div>
+</header>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6" ng-repeat="event in events">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{event.title}}</h3>
+        </div>
+        <div class="panel-body">
+          {{event.content}}
+        </div>
+        <div class="panel-footer">
+          {{event.venue.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

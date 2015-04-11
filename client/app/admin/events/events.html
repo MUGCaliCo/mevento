@@ -1,0 +1,37 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form method="POST" ng-submit="save()" name="frmEvent" class="form-horizontal" role="form">
+        <div class="form-group">
+          <legend>Create new event</legend>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input id="title" type="text" class="form-control" ng-model="event.title" placeholder="e.g. Albert's party">
+        </div>
+
+        <div class="form-group">
+          <label for="content">Description</label>
+          <textarea id="content" type="text" class="form-control" ng-model="event.content" placeholder="e.g. This will be the craziest party ever"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="venue">Venue</label>
+          <select name="venue" class="form-control" ng-model="event.venue" id="venue" ng-options="item._id as item.name for item in venues">
+            <option value="">Select venue</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
