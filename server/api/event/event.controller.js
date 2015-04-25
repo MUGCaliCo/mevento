@@ -22,6 +22,31 @@ exports.show = function(req, res) {
   });
 };
 
+// Get a single event
+exports.showSlug = function(req, res) {
+  Event.findOne({ slug: req.params.slug })
+  .populate('venue')
+  .exec(function (err, event) {
+    if(err) { return handleError(res, err); }
+    if(!event) { return res.send(404); }
+    return res.json(event);
+  });
+};
+
+// Creates a new comment in the DB.
+exports.commentEvent = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  var newComment = {
+    comment: req.body.comment,
+    user: req.body.user,
+    time: new Date().toISOString()
+  };
+  Event.findByIdAndUpdate({_id: req.params.id}, {$push: {'comments': newComment }}, function (err, event) {
+    if(err) { return handleError(res, err); }
+    return res.json(201, event);
+  });
+};
+
 // Creates a new event in the DB.
 exports.create = function(req, res) {
   Event.create(req.body, function(err, event) {

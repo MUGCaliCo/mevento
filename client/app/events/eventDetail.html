@@ -1,0 +1,44 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>{{ the_event.title }}</h1>
+  </div>
+</header>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <p>
+        {{ the_event.content }}
+      </p>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{the_event.venue.name}}</h3>
+        </div>
+        <div class="panel-body">
+          {{the_event.venue.info}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8">
+      <form name="frmComment" ng-submit="addComment()" method="POST" class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="sr-only" for="comment">Comment</label>
+          <textarea class="form-control" id="comment" ng-model="comment" placeholder="e.g. Any other direction?"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-md-12" ng-repeat="comment in the_event.comments">
+          {{ comment.comment }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

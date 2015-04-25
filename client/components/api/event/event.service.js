@@ -13,7 +13,10 @@ angular.module('meventoApp')
         return $resource('/api/venues/:venueId', {venueId:'@id'});
       },
       events: function () {
-        return $resource('/api/events/:eventId', {eventId:'@id'});
+        return $resource('/api/events/:eventSlug', {eventSlug:'@slug'});
       },
+      commentEvent: function () {
+        return $resource('/api/events/:eventId/comment/:commentId', {eventId:'@eId', commentId: '@cId'});
+      }
     };
   });

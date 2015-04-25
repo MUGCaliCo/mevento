@@ -7,8 +7,8 @@ var mongoose = require('mongoose'),
 var CommentSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
   comment: String,
-  info: String,
-  active: Boolean
+  active: Boolean,
+  time: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('Comment', CommentSchema);

@@ -15,7 +15,7 @@ var EventSchema = new Schema({
   categories: [ String ],
   assistants: [ User ],
   speakers: [ User ],
-  comments: [ Comment ],
+  comments: [ mongoose.modelSchemas.Comment ],
   info: String,
   active: Boolean
 });
@@ -37,7 +37,7 @@ function slugify(text) {
 EventSchema
   .path('title')
   .validate(function(title) {
-    return title != '';
+    return title !== '';
   }, 'Title cannot be blank');
 
 /**
